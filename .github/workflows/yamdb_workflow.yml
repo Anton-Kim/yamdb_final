@@ -18,6 +18,7 @@ jobs:
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
         cd api_yamdb
         pip install -r requirements.txt
+        cd ~
     - name: Test with flake8 and django tests
       run: |
         python -m flake8
@@ -59,6 +60,7 @@ jobs:
           script: |
             sudo docker-compose stop
             sudo docker-compose rm web
+            cd infra/
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
